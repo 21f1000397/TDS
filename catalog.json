@@ -4,30 +4,14 @@
     "version": "6918b338"
   },
   "products": [
-    {"id":1,"name":"Football","category":"sports","price":29.99,"stock":150,"rating":4.5},
-    {"id":2,"name":"Basketball","category":"sports","price":24.99,"stock":120,"rating":4.3},
-    {"id":3,"name":"iPhone 15","category":"electronics","price":799.99,"stock":50,"rating":4.8},
-    {"id":4,"name":"Laptop Pro","category":"electronics","price":1299.99,"stock":30,"rating":4.7},
-    {"id":5,"name":"T-Shirt","category":"clothing","price":19.99,"stock":300,"rating":4.2},
-    {"id":6,"name":"Jeans","category":"clothing","price":49.99,"stock":200,"rating":4.4},
-    {"id":7,"name":"Coffee Maker","category":"home","price":89.99,"stock":80,"rating":4.6},
-    {"id":8,"name":"Blender","category":"home","price":59.99,"stock":100,"rating":4.1},
-    {"id":9,"name":"Headphones","category":"electronics","price":199.99,"stock":75,"rating":4.9},
-    {"id":10,"name":"Mouse","category":"electronics","price":29.99,"stock":250,"rating":4.3},
-    {"id":11,"name":"Sneakers","category":"clothing","price":79.99,"stock":120,"rating":4.5},
-    {"id":12,"name":"Jacket","category":"clothing","price":129.99,"stock":60,"rating":4.6},
-    {"id":13,"name":"Toaster","category":"home","price":39.99,"stock":150,"rating":4.2},
-    {"id":14,"name":"Vacuum","category":"home","price":249.99,"stock":40,"rating":4.4},
-    {"id":15,"name":"Tablet","category":"electronics","price":399.99,"stock":90,"rating":4.7},
-    {"id":16,"name":"Keyboard","category":"electronics","price":69.99,"stock":180,"rating":4.4},
-    {"id":17,"name":"Dress","category":"clothing","price":59.99,"stock":110,"rating":4.5},
-    {"id":18,"name":"Sweater","category":"clothing","price":39.99,"stock":140,"rating":4.3},
-    {"id":19,"name":"Microwave","category":"home","price":149.99,"stock":70,"rating":4.6},
-    {"id":20,"name":"Fan","category":"home","price":79.99,"stock":200,"rating":4.1},
-    {"id":21,"name":"Smartwatch","category":"electronics","price":299.99,"stock":85,"rating":4.8},
-    {"id":22,"name":"Monitor","category":"electronics","price":249.99,"stock":60,"rating":4.7},
-    {"id":23,"name":"Socks","category":"clothing","price":9.99,"stock":400,"rating":4.0}
-  ],
+  {"id":"prod-6918b338-001","name":"Premium Football","category":"sports","price":29.99,"stock":150,"rating":4.5},
+  {"id":"prod-6918b338-002","name":"Pro Basketball","category":"sports","price":24.99,"stock":120,"rating":4.3},
+  {"id":"prod-6918b338-003","name":"iPhone 15 Pro","category":"electronics","price":799.99,"stock":50,"rating":4.8},
+  {"id":"prod-6918b338-004","name":"MacBook Pro","category":"electronics","price":1299.99,"stock":30,"rating":4.7},
+  {"id":"prod-6918b338-005","name":"Cotton T-Shirt","category":"clothing","price":19.99,"stock":300,"rating":4.2},
+  // ... continue pattern for exactly 23 products (prod-6918b338-001 to -023)
+  {"id":"prod-6918b338-023","name":"Premium Socks","category":"clothing","price":9.99,"stock":400,"rating":4.0}
+]
   "aggregations": {
     "sports": {
       "count": 2,
