@@ -11,18 +11,20 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true  # Key fix
 
       - name: Update status by 21f1000397@ds.study.iitm.ac.in
         run: |
           date_str=$(date -u)
-          echo "# Daily Status Update" > STATUS.md
-          echo "Last run: $date_str" >> STATUS.md
-          echo "## DevSync Automation" >> STATUS.md
+          echo "# Daily Status" > STATUS.md
+          echo "Updated: $date_str" >> STATUS.md
 
-      - name: Git config and commit
+      - name: Git commit & push
         run: |
           git config user.name "DevSync Bot"
           git config user.email "21f1000397@ds.study.iitm.ac.in"
           git add STATUS.md
-          git commit -m "Daily automation: $(date -u) #devsync"
+          git commit -m "Daily automation $(date -u)"
           git push
