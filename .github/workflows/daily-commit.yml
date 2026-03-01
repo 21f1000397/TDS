@@ -1,0 +1,24 @@
+name: Daily Automated Commit
+
+on:
+  schedule:
+    - cron: '30 0 * * *'  # Daily at 00:30 UTC
+  workflow_dispatch:  # For manual testing
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update status file by Mohana Sundaram (21f1000397@ds.study.iitm.ac.in)
+        run: |
+          echo "Last updated: $(date -u)" > STATUS.md
+          echo "Daily automation run complete." >> STATUS.md
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9  # Reliable auto-commit action
+        with:
+          message: 'Daily update - automated commit'
+          add: 'STATUS.md'
