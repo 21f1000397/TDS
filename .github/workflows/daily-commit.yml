@@ -16,7 +16,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 'Update status by 21f1000397@ds.study.iitm.ac.in'
-      run: echo "Updated: $(date -u)" >> status.txt
+      run: |
+        echo "Updated: $(date -u)" >> status.txt
 
     - name: 'Git config for 21f1000397@ds.study.iitm.ac.in'
       run: |
