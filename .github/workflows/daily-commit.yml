@@ -5,26 +5,23 @@ on:
     - cron: '30 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write  # Grants GITHUB_TOKEN write access
+
 jobs:
   commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true  # Key fix
+      - uses: actions/checkout@v4
 
       - name: Update status by 21f1000397@ds.study.iitm.ac.in
         run: |
-          date_str=$(date -u)
-          echo "# Daily Status" > STATUS.md
-          echo "Updated: $date_str" >> STATUS.md
+          echo "# Daily Update $(date -u)" > STATUS.md
 
-      - name: Git commit & push
+      - name: Commit & push
         run: |
-          git config user.name "DevSync Bot"
+          git config user.name github-actions[bot]
           git config user.email "21f1000397@ds.study.iitm.ac.in"
           git add STATUS.md
-          git commit -m "Daily automation $(date -u)"
+          git commit -m "Daily run $(date)"
           git push
