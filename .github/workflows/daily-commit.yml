@@ -2,8 +2,8 @@ name: Daily Automated Commit
 
 on:
   schedule:
-    - cron: '30 0 * * *'  # Daily at 00:30 UTC
-  workflow_dispatch:  # For manual testing
+    - cron: '30 0 * * *'
+  workflow_dispatch:
 
 jobs:
   commit:
@@ -12,13 +12,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Update status file by Mohana Sundaram (21f1000397@ds.study.iitm.ac.in)
+      - name: Update status by 21f1000397@ds.study.iitm.ac.in
         run: |
-          echo "Last updated: $(date -u)" > STATUS.md
-          echo "Daily automation run complete." >> STATUS.md
+          date_str=$(date -u)
+          echo "# Daily Status Update" > STATUS.md
+          echo "Last run: $date_str" >> STATUS.md
+          echo "## DevSync Automation" >> STATUS.md
 
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v9  # Reliable auto-commit action
-        with:
-          message: 'Daily update - automated commit'
-          add: 'STATUS.md'
+      - name: Git config and commit
+        run: |
+          git config user.name "DevSync Bot"
+          git config user.email "21f1000397@ds.study.iitm.ac.in"
+          git add STATUS.md
+          git commit -m "Daily automation: $(date -u) #devsync"
+          git push
