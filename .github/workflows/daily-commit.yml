@@ -1,27 +1,29 @@
-name: Daily Automated Commit
+name: Daily Auto Commit
 
 on:
   schedule:
-    - cron: '30 0 * * *'
-  workflow_dispatch:
-
-permissions:
-  contents: write  # Grants GITHUB_TOKEN write access
+    # Runs daily at 3:00 UTC (specific minutes/hours, no wildcards)
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # For manual testing
 
 jobs:
   commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: 21f1000397@ds.study.iitm.ac.in
+      - name: Step with email 21f1000397@ds.study.iitm.ac.in
         run: |
-          echo "# Daily Update $(date -u)" > STATUS.md
+          echo "Daily update: $(date -u)" > status.txt
 
-      - name: Commit & push
+      - name: Configure git user
         run: |
-          git config user.name github-actions[bot]
+          git config user.name "DevSync Bot"
           git config user.email "21f1000397@ds.study.iitm.ac.in"
-          git add STATUS.md
-          git commit -m "Daily run $(date)"
+
+      - name: Commit changes
+        run: |
+          git add status.txt
+          git commit -m "Daily automated update $(date -u)"
           git push
